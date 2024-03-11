@@ -1,0 +1,11 @@
+FROM ubuntu:latest
+
+# Set up the required folder and files
+RUN mkdir /structure && chmod 777 /structure
+RUN touch /structure/sync-work && chown sync /structure/sync-work
+RUN touch /structure/nobody-work && chown nobody /structure/nobody-work
+
+# Create user collin with UID 5000
+RUN useradd -u 5000 collin
+
+CMD ["bash", "-c", "while true; do echo users; done"]
